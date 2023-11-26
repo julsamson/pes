@@ -61,7 +61,7 @@ export const SignInForm = () => {
       <div>
         <label htmlFor="username">Username</label>
         <Input
-          placeholder="shadcn"
+          placeholder="pubgname"
           {...register('username')}
         />
         {formState.errors.username && (
