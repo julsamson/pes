@@ -34,17 +34,17 @@ const FormSchema = z.object({
   })
     .min(6, {
       message: 'Password must be at least 6 characters.',
-  }),
+    }),
 
   confirmpassword: z.string().min(1, {
     message: 'please confirm your password'
   })
 
 })
-.refine((data) => data.password === data.confirmpassword, {
-  path: ['confirmpassword'],
-  message: 'password do not match '
-} )
+  .refine((data) => data.password === data.confirmpassword, {
+    path: ['confirmpassword'],
+    message: 'password do not match '
+  })
 
 
 export const SignInForm = () => {
@@ -58,6 +58,9 @@ export const SignInForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <h2 className='text-center font-bold text-4xl'>
+        Sign Up
+      </h2>
       <div>
         <label htmlFor="username">Username</label>
         <Input

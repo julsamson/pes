@@ -3,6 +3,8 @@ import React from 'react'
 
 export default function Sign() {
     return (
-        <div><SignInForm /></div>
+        <div className={"container mx-auto py-12 flex justify-center"}>
+            <SignInForm />
+        </div>
     )
 }

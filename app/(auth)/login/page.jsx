@@ -3,6 +3,8 @@ import React from 'react'
 
 export default function Login() {
   return (
-    <div><LogInForm /></div>
+    <div className={"container mx-auto py-12 flex justify-center"}>
+      <LogInForm />
+    </div>
   )
 }

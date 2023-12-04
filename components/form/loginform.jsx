@@ -20,15 +20,16 @@ const FormSchema = z.object({
     message: 'email should contain @..',
   }),
 
-  password: z.string().min(1,{
+  password: z.string().min(1, {
     message: 'Enter a valid password.'
   })
-  .min(6, {
-    message: 'Password must be at least 6 characters.',
-  }),
+    .min(6, {
+      message: 'Password must be at least 6 characters.',
+    }),
 });
 
 export const LogInForm = () => {
+  
   const { handleSubmit, register, formState } = useForm({
     resolver: zodResolver(FormSchema),
   });
@@ -38,7 +39,12 @@ export const LogInForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-2/6 space-y-6">
+
+      <h2 className='text-center font-bold text-4xl'>
+        Login
+      </h2>
+
       {/* <div>
         <label htmlFor="username">Username</label>
         <Input
@@ -49,6 +55,7 @@ export const LogInForm = () => {
           <span>{formState.errors.username.message}</span>
         )}
       </div> */}
+
       <div>
         <label htmlFor="email">Email</label>
         <Input
