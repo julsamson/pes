@@ -15,7 +15,7 @@ model User {
   email     String   @unique
   username  String   @unique
   password  String
-  room      Int
+  room      String
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
