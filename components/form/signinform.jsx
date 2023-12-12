@@ -15,6 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -48,12 +49,32 @@ const FormSchema = z.object({
 
 
 export const SignInForm = () => {
+
+  const router = useRouter();
+
   const { handleSubmit, register, formState } = useForm({
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log('submitted form!', data);
+  const onSubmit = async (data) => {
+    const response = await fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        room: data.room,
+      })
+    })
+
+    if(response.ok){
+      router.push('/login')
+    } else{
+      console.error('Registration Failed');
+    }
   };
 
   return (
